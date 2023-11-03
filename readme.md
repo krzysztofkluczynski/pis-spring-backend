@@ -30,7 +30,14 @@ To get started with the project, follow these steps:
    docker run -p 8080:8080 spring-boot-docker:spring-docker .
    ```
 
+<h1>To run tests</h1>
+
+   ```bash
+   mvn test
+   ````
+
 <h1> To build a jar file </h1> 
 
    ```bash
     mvn package
+   ```

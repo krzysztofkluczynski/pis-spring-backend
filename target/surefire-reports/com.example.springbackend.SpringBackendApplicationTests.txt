@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springbackend.SpringBackendApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.15 s - in com.example.springbackend.SpringBackendApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.372 s - in com.example.springbackend.SpringBackendApplicationTests

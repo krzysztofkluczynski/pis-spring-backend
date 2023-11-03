@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.springbackend.SpringBackendApplicationTests" time="2.372" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.springbackend.UserTest" time="0.006" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -62,26 +62,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="contextLoads" classname="com.example.springbackend.SpringBackendApplicationTests" time="0.731">
-    <system-out><![CDATA[20:42:24.268 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.springbackend.SpringBackendApplicationTests]: SpringBackendApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-20:42:24.375 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.springbackend.SpringBackendApplication for test class com.example.springbackend.SpringBackendApplicationTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.1.5)
-
-2023-11-03T20:42:24.738+01:00  INFO 32372 --- [           main] c.e.s.SpringBackendApplicationTests      : Starting SpringBackendApplicationTests using Java 21.0.1 with PID 32372 (started by krzys in C:\Users\krzys\Desktop\projekt_pis\pis-spring-backend\spring-backend)
-2023-11-03T20:42:24.739+01:00  INFO 32372 --- [           main] c.e.s.SpringBackendApplicationTests      : No active profile set, falling back to 1 default profile: "default"
-2023-11-03T20:42:25.726+01:00  INFO 32372 --- [           main] c.e.s.SpringBackendApplicationTests      : Started SpringBackendApplicationTests in 1.206 seconds (process running for 2.053)
-]]></system-out>
-    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\krzys\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.9\byte-buddy-agent-1.14.9.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
-  </testcase>
+  <testcase name="setNameTest" classname="com.example.springbackend.UserTest" time="0.004"/>
+  <testcase name="getNameCreatedInConstructorTest" classname="com.example.springbackend.UserTest" time="0.001"/>
 </testsuite>
