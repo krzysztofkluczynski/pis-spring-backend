@@ -6,6 +6,7 @@ pipeline {
             steps {
                 // Replace this with your build commands
                 sh 'echo "Building the application - test"'
+                sh 'mvn clean install'
             }
         }
 
@@ -13,6 +14,7 @@ pipeline {
             steps {
                 // Replace this with your test commands
                 sh 'echo "Running tests - test"'
+                sh 'mvn test"'
             }
         }
 
