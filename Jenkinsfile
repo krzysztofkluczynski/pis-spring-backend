@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // Replace this with your test commands
                 sh 'echo "Running tests - test"'
-                sh 'mvn test"'
+                sh 'mvn test'
             }
         }
 
