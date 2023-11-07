@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Replace this with your deployment commands
                 sh 'echo "Deploying the application"'
-                //mvn spring-boot:run?
+                sh 'mvn spring-boot:run'
                 //mvn deploy??
             }
         }
