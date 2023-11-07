@@ -21,7 +21,7 @@ pipeline {
         stage('deploy') {
             steps {
                 // Replace this with your deployment commands
-                sh 'echo "Deploying the application"'
+                sh 'echo "Deploying   the application"'
                 //sh 'mvn spring-boot:run'
                 //mvn deploy??
             }
