@@ -5,7 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 // Replace this with your build commands
-                sh 'echo "Building the application - test"'
+                sh 'echo "Building the application"'
                 sh 'mvn clean install -DskipTests'
             }
         }
@@ -13,7 +13,7 @@ pipeline {
         stage('test') {
             steps {
                 // Replace this with your test commands
-                sh 'echo "Running tests - test"'
+                sh 'echo "Running tests"'
                 sh 'mvn test'
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('deploy') {
             steps {
                 // Replace this with your deployment commands
-                sh 'echo "Deploying the application - test"'
+                sh 'echo "Deploying the application"'
                 //mvn spring-boot:run?
                 //mvn deploy??
             }
