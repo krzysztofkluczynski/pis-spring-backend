@@ -23,7 +23,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'feature/nexusUpload', url: 'https://github.com/krzysztofkluczynski/pis-spring-backend.git';
+                    git branch: 'PIS23Z-4-nexustest', url: 'https://github.com/krzysztofkluczynski/pis-spring-backend.git';
                 }
             }
         }
