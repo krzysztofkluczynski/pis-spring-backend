@@ -22,6 +22,8 @@ pipeline {
             steps {
                 // Replace this with your deployment commands
                 sh 'echo "Deploying the application"'
+                //sh 'cd /var/lib/jenkins/workspace/target
+                //sh 'java -jar spring-backend-0.0.1-SNAPSHOT.jar'
                 //sh 'mvn spring-boot:run'
                 //mvn deploy??
             }
