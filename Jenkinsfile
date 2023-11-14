@@ -73,8 +73,8 @@ pipeline {
                     def jarFile = sh(returnStdout: true, script: 'find target -name "*.jar"').trim()
 
                     // Build Docker image and deploy the application
-                    sh 'sudo docker build -t spring-backend:latest -f Dockerfile --build-arg JAR_FILE=${jarFile} .'
-                    sh 'sudo docker.image("spring-backend:latest").run("-p 8080:8080")'
+                    sh 'docker build -t spring-backend:latest -f Dockerfile --build-arg JAR_FILE=${jarFile} .'
+                    sh 'docker.image("spring-backend:latest").run("-p 8080:8080")'
                 }
             }
         }
