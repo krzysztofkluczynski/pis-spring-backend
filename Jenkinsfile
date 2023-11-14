@@ -70,11 +70,11 @@ pipeline {
             steps {
                 script {
                     // Stop the existing container if it's running
-                    sh 'docker ps -q --filter "ancestor=spring-backend:latest" | xargs -r docker stop'
+                    sh 'docker stop spring-backend'
                     // Build Docker image
                     sh 'docker build -t spring-backend:latest -f Dockerfile .'
                     // Run the new container
-                    sh 'docker run -d -p 8080:8080 spring-backend:latest'
+                    sh 'docker run -d -p 8080:8080 --name spring-backend spring-backend:latest'
                 }
             }
         }
