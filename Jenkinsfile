@@ -74,7 +74,7 @@ pipeline {
 
                     // Build Docker image and deploy the application
                     sh 'docker build -t spring-backend:latest -f Dockerfile --build-arg JAR_FILE=${jarFile} .'
-                    sh 'docker.image("spring-backend:latest").run("-p 8080:8080")'
+                    sh 'docker run -p 8080:8080 spring-backend:latest'
                 }
             }
         }
