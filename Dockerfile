@@ -4,11 +4,7 @@ FROM openjdk:17-jdk-alpine
 # Set the working directory in the container
 WORKDIR /app
 
-# Define a build argument to receive the JAR file name during build time
-ARG JAR_FILE
-
-# Copy the dynamically detected JAR file into the container
-COPY ${JAR_FILE} /app/app.jar
+COPY target/spring-backend-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expose port 8080 (assuming your Spring Boot app runs on this port)
 EXPOSE 8080
