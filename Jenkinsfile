@@ -72,6 +72,8 @@ pipeline {
                     // Find the JAR file dynamically in the 'target' directory
                     def jarFile = sh(returnStdout: true, script: 'find target -name "*.jar"').trim()
 
+                    echo "JAR file path: ${jarFile}"
+
                     // Build Docker image and deploy the application
                     sh 'docker build -t spring-backend:latest -f Dockerfile --build-arg JAR_FILE=${jarFile} .'
                     sh 'docker run -p 8080:8080 spring-backend:latest'
