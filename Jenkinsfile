@@ -76,7 +76,7 @@ pipeline {
 
                     // Build Docker image and deploy the application
                     sh 'docker build -t spring-backend:latest -f Dockerfile .'
-                    sh 'docker run -p 8080:8080 spring-backend:latest'
+                    sh 'docker run -d -p 8080:8080 spring-backend:latest'
                 }
             }
         }
