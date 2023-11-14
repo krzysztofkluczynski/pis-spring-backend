@@ -69,13 +69,11 @@ pipeline {
         stage('Deploy to Docker Container') {
             steps {
                 script {
-                    // Find the JAR file dynamically in the 'target' directory
-                    def jarFile = sh(returnStdout: true, script: 'find target -name "*.jar"').trim()
-
-                    echo "JAR file path: ${jarFile}"
-
-                    // Build Docker image and deploy the application
+                    // Stop the existing container if it's running
+                    sh 'docker ps -q --filter "ancestor=spring-backend:latest" | xargs -r docker stop'
+                    // Build Docker image
                     sh 'docker build -t spring-backend:latest -f Dockerfile .'
+                    // Run the new container
                     sh 'docker run -d -p 8080:8080 spring-backend:latest'
                 }
             }
