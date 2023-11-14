@@ -9,7 +9,7 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "localhost:8082"
-        NEXUS_REPOSITORY = "PisFullBackendPipelineTest"
+        NEXUS_REPOSITORY = "PisSpringBackend"
         NEXUS_CREDENTIAL_ID = "nexusCredential"
         ARTIFACT_VERSION = "${BUILD_NUMBER}"
     }
