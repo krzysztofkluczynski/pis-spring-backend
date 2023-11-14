@@ -70,7 +70,7 @@ pipeline {
             steps {
                 script {
                     // Stop the existing container if it's running
-                    sh 'docker stop spring-backend || true'
+                    sh 'docker rm -f spring-backend || true'
                     // Build Docker image
                     sh 'docker build -t spring-backend:latest -f Dockerfile .'
                     // Run the new container
