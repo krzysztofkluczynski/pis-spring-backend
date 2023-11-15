@@ -18,6 +18,12 @@ pipeline {
             }
         }
 
+        stage("Check code coverage") {
+                steps {
+                    sh 'mvn jacoco:report'
+                }
+            }
+
         stage("Deploy") {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
