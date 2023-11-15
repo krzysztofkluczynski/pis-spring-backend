@@ -1,43 +1,82 @@
 pipeline {
     agent any
+    tools {
+        maven "MAVEN_HOME"
+        jdk "Java17"
+    }
+
+    environment {
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "localhost:8082"
+        NEXUS_REPOSITORY = "PisSpringBackend"
+        NEXUS_CREDENTIAL_ID = "nexusCredential"
+        ARTIFACT_VERSION = "${BUILD_NUMBER}"
+    }
 
     stages {
-        stage('build') {
+        stage("Build") {
             steps {
-                // Replace this with your build commands
-                sh 'echo "Building the application"'
                 sh 'mvn clean install -DskipTests'
             }
         }
-
-        stage('test') {
+        stage("Publish artifacts to nexus") {
             steps {
-                // Replace this with your test commands
-                sh 'echo "Running tests"'
+                script {
+                    // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
+                    pom = readMavenPom file: "pom.xml";
+                    // Find built artifact under target folder
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    // Print some info from the artifact found
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                    // Extract the path from the File found
+                    artifactPath = filesByGlob[0].path;
+                    // Assign to a boolean response verifying If the artifact name exists
+                    artifactExists = fileExists artifactPath;
+
+                    if(artifactExists) {
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+
+                        nexusArtifactUploader(
+                            nexusVersion: NEXUS_VERSION,
+                            protocol: NEXUS_PROTOCOL,
+                            nexusUrl: NEXUS_URL,
+                            groupId: pom.groupId,
+                            version: ARTIFACT_VERSION,
+                            repository: NEXUS_REPOSITORY,
+                            credentialsId: NEXUS_CREDENTIAL_ID,
+                            artifacts: [
+                                // Artifact generated such as .jar, .ear and .war files.
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: artifactPath,
+                                type: pom.packaging]
+                            ]
+                        );
+
+                    } else {
+                        error "*** File: ${artifactPath}, could not be found";
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
                 sh 'mvn test'
             }
         }
 
-        stage('deploy') {
+        stage('Deploy to Docker Container') {
             steps {
-                // Replace this with your deployment commands
-                sh 'echo "Deploying the application"'
-                //sh 'cd /var/lib/jenkins/workspace/target
-                //sh 'java -jar spring-backend-0.0.1-SNAPSHOT.jar'
-                //sh 'mvn spring-boot:run'
-                //mvn deploy??
+                script {
+                    // Stop the existing container if it's running
+                    sh 'docker rm -f spring-backend || true'
+                    // Build Docker image
+                    sh 'docker build -t spring-backend:latest -f Dockerfile .'
+                    // Run the new container
+                    sh 'docker run -d -p 8080:8080 --name spring-backend spring-backend:latest'
+                }
             }
-        }
-    }
-
-    post {
-        success {
-            // Actions to perform if the pipeline succeeds
-            echo 'Pipeline succeeded!'
-        }
-        failure {
-            // Actions to perform if the pipeline fails
-            echo 'Pipeline failed!'
         }
     }
 }
