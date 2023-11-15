@@ -8,6 +8,19 @@
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<repositories>
+		<repository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8082/repository/PisNexus/</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8082/repository/PisNexus/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<groupId>com.example</groupId>
 	<artifactId>spring-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
