@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping("")
     public String hello() {
-        return "<h1>Hello from default page :))))<h1>";
+        return "<h1>Hello from default page :////<h1>";
     }
 
 }
