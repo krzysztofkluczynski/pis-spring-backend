@@ -20,7 +20,7 @@ pipeline {
 
         stage("Check code coverage") {
                 steps {
-                    sh 'mvn jacoco:report'
+                    sh 'mvn jacoco:report-aggregate'
                 }
             }
 
