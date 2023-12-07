@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@CrossOrigin(origins = "http://172.21.0.2:8083")
+@CrossOrigin(origins = "http://localhost:8083")
 public class UserController {
     @Autowired
     private UserService service;
@@ -20,7 +20,7 @@ public class UserController {
 
     //GET METHODS
     @GetMapping("/users")
-    @CrossOrigin(origins = "http://172.21.0.2:8083")
+    @CrossOrigin(origins = "http://localhost:8083")
     public List<User> getUsers() {
         return service.getUsers();
     }
