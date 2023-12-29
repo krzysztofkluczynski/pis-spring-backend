@@ -9,3 +9,12 @@ CREATE TABLE IF NOT EXISTS users (
     surname VARCHAR(50) NOT NULL,
     age INT NOT NULL
 );
+
+-- Create the "messages" table if it doesn't exist
+CREATE TABLE IF NOT EXISTS messages (
+    id SERIAL PRIMARY KEY,
+    sender_id INT REFERENCES users(id),
+    recipient_id INT REFERENCES users(id),
+    content TEXT NOT NULL,
+    timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
