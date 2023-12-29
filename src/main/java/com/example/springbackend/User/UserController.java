@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
     @Autowired
     private UserService service;
