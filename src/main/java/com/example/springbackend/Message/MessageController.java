@@ -20,6 +20,14 @@ public class MessageController {
                 .ok(service.getMessagesbySenderRecipient(senderId, recipientId));
     }
 
+
+    @GetMapping("/messages/all/{senderId}/{recipientId}")
+    public ResponseEntity<List<Message>> findAllChatMessages(@PathVariable int senderId,
+                                                          @PathVariable int recipientId) {
+        return ResponseEntity
+                .ok(service.getAllMessagesInChat(senderId, recipientId));
+    }
+
     @PostMapping("/messages/create")
     public ResponseEntity<Message> createMessage(@RequestBody Message message) {
         System.out.println(message);
