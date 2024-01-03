@@ -18,4 +18,10 @@ public class MessageService {
     public List<Message> getMessagesbySenderRecipient(int senderId, int recipientId) {
         return repository.findBySenderIdAndRecipientId(senderId, recipientId);
     }
+
+
+    public List<Message> getAllMessagesInChat(int firstUserId, int secondUserId) {
+        return repository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientIdOrderByTimestampAsc(
+                firstUserId, secondUserId, secondUserId, firstUserId);
+    }
 }
