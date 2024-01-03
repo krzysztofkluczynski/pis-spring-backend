@@ -1,14 +1,14 @@
 package com.example.springbackend.User;
 
-import com.example.springbackend.User.User;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @CrossOrigin(origins = "*")
+@AllArgsConstructor
 public class UserController {
     @Autowired
     private UserService service;
@@ -20,8 +20,8 @@ public class UserController {
 
     //GET METHODS
     @GetMapping("/users")
-    public List<User> getUsers() {
-        return service.getUsers();
+    public ResponseEntity<List<User>> getUsers() {
+        return ResponseEntity.ok(service.getUsers());
     }
 
     @GetMapping("/user/{id}")
@@ -37,6 +37,8 @@ public class UserController {
 
     //POST METHODS
     @PostMapping("/adduser")
+//    @MessageMapping("/user.addUser")
+//    @SendTo("/user/topic")
     public User addUser(@RequestBody User user) {
         return service.saveUser(user);
     }
