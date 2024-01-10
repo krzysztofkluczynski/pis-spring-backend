@@ -21,7 +21,7 @@ public class MessageService {
 
 
     public List<Message> getAllMessagesInChat(int firstUserId, int secondUserId) {
-        return repository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientIdOrderByTimestampAsc(
+        return repository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientIdOrderByTimestampDesc(
                 firstUserId, secondUserId, secondUserId, firstUserId);
     }
 }
