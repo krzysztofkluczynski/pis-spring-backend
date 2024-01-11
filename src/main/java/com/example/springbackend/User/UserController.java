@@ -35,15 +35,13 @@ public class UserController {
     }
 
     //POST METHODS
-    @PostMapping("/users/add")
-//    @MessageMapping("/user.addUser")
-//    @SendTo("/user/topic")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    @PostMapping("/users/create")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(service.saveUser(user));
     }
 
-    @PostMapping("/users/add_multiple")
-    public ResponseEntity<List<User>> addUsers(@RequestBody List<User> users) {
+    @PostMapping("/users/create_multiple")
+    public ResponseEntity<List<User>> createUsers(@RequestBody List<User> users) {
         return ResponseEntity.ok(service.saveUsers(users));
     }
 

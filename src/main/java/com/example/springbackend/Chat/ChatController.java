@@ -18,9 +18,7 @@ public class ChatController {
 
     @PostMapping("/chats/create")
     public ResponseEntity<Chat> createChat(@RequestBody Chat chat) {
-        System.out.println(chat);
-        Chat createdChat = service.createChat(
-                chat);
+        Chat createdChat = service.saveChat(chat);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdChat);
     }
 

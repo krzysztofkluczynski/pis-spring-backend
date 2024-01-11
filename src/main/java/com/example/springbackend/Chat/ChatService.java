@@ -14,12 +14,12 @@ public class ChatService {
     public Chat getChat(int chatId) {
         return repository.findById(chatId).orElse(null);
     }
-    public Chat createChat(Chat chat) {
+    public Chat saveChat(Chat chat) {
         return repository.save(chat);
     }
 
     public Chat getChatByUsers(int user1Id, int user2Id) {
-        return repository.findFirstByuser1IdAnduser2IdOruser2IdAnduser1Id(user1Id, user2Id, user2Id, user1Id);
+        return repository.findFirstByUser1IdAndUser2IdOrUser2IdAndUser1Id(user1Id, user2Id, user1Id, user2Id);
     }
 
 }

@@ -28,10 +28,10 @@ public class Message {
     @CreationTimestamp
     private LocalDateTime timestamp;
 
-    public Message(int chatId, int userId, String context, LocalDateTime timestamp) {
+    public Message(int chatId, int userId, String content, LocalDateTime timestamp) {
         this.chatId = chatId;
-        this.chatId = userId;
-        this.content = context;
+        this.userId = userId;
+        this.content = content;
         this.timestamp = timestamp;
     }
 }

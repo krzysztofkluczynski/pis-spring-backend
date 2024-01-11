@@ -18,11 +18,9 @@ public class MessageController {
         return ResponseEntity
                 .ok(service.getChatMessages(chatId));
     }
-    @PostMapping("/chats/{chatId}/send")
+    @PostMapping("/chats/send")
     public ResponseEntity<Message> createMessage(@RequestBody Message message) {
-        System.out.println(message);
-        Message createdMessage = service.createMessage(
-                message);
+        Message createdMessage = service.saveMessage(message);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
     }
 

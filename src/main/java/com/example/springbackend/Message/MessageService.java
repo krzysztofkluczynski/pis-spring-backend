@@ -12,7 +12,7 @@ public class MessageService {
     @Autowired
     private MessageRepository repository;
 
-    public Message createMessage(Message message) {
+    public Message saveMessage(Message message) {
         return repository.save(message);
     }
 
