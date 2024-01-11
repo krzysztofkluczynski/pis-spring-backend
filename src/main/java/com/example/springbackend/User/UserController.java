@@ -24,38 +24,37 @@ public class UserController {
         return ResponseEntity.ok(service.getUsers());
     }
 
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable int id) {
-        return service.getUser(id);
+    @GetMapping("/users/id/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        return ResponseEntity.ok(service.getUser(id));
     }
 
-    @GetMapping("/userbyname/{name}")
-    public User getUserByName(@PathVariable String name) {
-        return service.getUserByName(name);
+    @GetMapping("/users/name/{name}")
+    public ResponseEntity<User> getUserByName(@PathVariable String name) {
+        return ResponseEntity.ok(service.getUserByName(name));
     }
-
 
     //POST METHODS
-    @PostMapping("/adduser")
+    @PostMapping("/users/add")
 //    @MessageMapping("/user.addUser")
 //    @SendTo("/user/topic")
-    public User addUser(@RequestBody User user) {
-        return service.saveUser(user);
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        return ResponseEntity.ok(service.saveUser(user));
     }
 
-    @PostMapping("/addusers")
-    public List<User> addUsers(@RequestBody List<User> users) {
-        return service.saveUsers(users);
+    @PostMapping("/users/add_multiple")
+    public ResponseEntity<List<User>> addUsers(@RequestBody List<User> users) {
+        return ResponseEntity.ok(service.saveUsers(users));
     }
 
     //PUT METHODS
-    @PutMapping("/update")
-    public User updateUser(@RequestBody User user) {
-        return service.updateUser(user);
+    @PutMapping("/users/update")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return ResponseEntity.ok(service.updateUser(user));
     }
 
     //DELETE METHODS
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/users/delete/{id}")
     public void deleteUser(@PathVariable int id) {
         service.deleteUser(id);
     }

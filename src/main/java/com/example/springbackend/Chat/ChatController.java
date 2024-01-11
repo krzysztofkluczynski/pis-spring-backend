@@ -1,32 +1,43 @@
-package com.example.springbackend.Chat;
-
-import com.example.springbackend.Message.Message;
-import com.example.springbackend.User.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Controller;
-
-//@Controller
+//package com.example.springbackend.Chat;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
 //public class ChatController {
 //
 //    @Autowired
-//    private SimpMessagingTemplate simpMessagingTemplate;
+//    private ChatService service;
 //
-//    private UserService userService;
-//
-//    @MessageMapping("/message") //
-//    @SendTo("/chatroom/public")
-//    public Message receiveMessage(@Payload Message message){
-//        return message;
+//    @GetMapping("/chats/{chatId}")
+//    public Chat getChat(@PathVariable int chatId) {
+//        return ResponseEntity
+//                .ok(service.getChat(chatId));
 //    }
 //
-//    @MessageMapping("/private-message")
-//    public Message recMessage(@Payload Message message){
-//        simpMessagingTemplate.convertAndSendToUser(userService.getUser(message.getRecipientId()).getLogin(),"/private",message);  // /user/user_login/private
-//        System.out.println(message.toString());
-//        return message;
+//    @GetMapping("/chats/{senderId}/{recipientId}")
+//    public ResponseEntity<List<Chat>> findChat(@PathVariable int senderId,
+//                                                          @PathVariable int recipientId) {
+//        return ResponseEntity
+//                .ok(service.getChatBySenderRecipient(senderId, recipientId));
 //    }
+//
+//    @GetMapping("/chats/{chatId}/messages")
+//    public ResponseEntity<List<Message>> getChatMessages(@PathVariable int chatId) {
+//        return ResponseEntity
+//                .ok(service.getChatMessages(chatId));
+//    }
+//
+//    @PostMapping("/chats/create")
+//    public ResponseEntity<Chat> createMessage(@RequestBody Message message) {
+//        System.out.println(message);
+//        Message createdMessage = service.saveMessage(
+//                message);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
+//    }
+//
 //}
