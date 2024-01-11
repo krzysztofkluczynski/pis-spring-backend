@@ -34,6 +34,11 @@ public class UserController {
         return ResponseEntity.ok(service.getUserByName(name));
     }
 
+    @GetMapping("/users/login/{login}")
+    public ResponseEntity<User> getUserByLogin(@PathVariable String login) {
+        return ResponseEntity.ok(service.getUserByLogin(login));
+    }
+
     //POST METHODS
     @PostMapping("/users/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {

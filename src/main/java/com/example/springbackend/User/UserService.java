@@ -34,6 +34,10 @@ public class UserService {
         return repository.findByName(name);
     }
 
+    public User getUserByLogin(String login) {
+        return repository.findByLogin(login);
+    }
+
     //DELETE METHODS
     public void deleteUser(int id) {
         repository.deleteById(id);
