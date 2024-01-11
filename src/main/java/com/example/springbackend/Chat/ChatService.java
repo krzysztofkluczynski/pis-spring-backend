@@ -2,7 +2,6 @@ package com.example.springbackend.Chat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -21,5 +20,10 @@ public class ChatService {
     public Chat getChatByUsers(int user1Id, int user2Id) {
         return repository.findFirstByUser1IdAndUser2IdOrUser2IdAndUser1Id(user1Id, user2Id, user1Id, user2Id);
     }
+
+    public List<Chat> getChatByOneUser(int userId) {
+        return repository.findByUser1IdOrUser2Id(userId, userId);
+    }
+
 
 }
