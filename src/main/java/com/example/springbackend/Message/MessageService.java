@@ -1,5 +1,6 @@
 package com.example.springbackend.Message;
 
+import com.example.springbackend.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,11 @@ public class MessageService {
         return repository.save(message);
     }
 
-    public List<Message> getMessagesbySenderRecipient(int senderId, int recipientId) {
-        return repository.findBySenderIdAndRecipientId(senderId, recipientId);
+    public Message getMessage(int messageId) {
+        return repository.findById(messageId).orElse(null);
     }
 
-
-    public List<Message> getAllMessagesInChat(int firstUserId, int secondUserId) {
-        return repository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientIdOrderByTimestampDesc(
-                firstUserId, secondUserId, secondUserId, firstUserId);
+    public List<Message> getChatMessages(int chatId) {
+            return repository.findByChatIdOOrderByTimestampDesc(chatId);
     }
 }

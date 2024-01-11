@@ -1,32 +1,30 @@
 package com.example.springbackend.Chat;
 
-import com.example.springbackend.Message.Message;
-import com.example.springbackend.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-//@Controller
-//public class ChatController {
-//
-//    @Autowired
-//    private SimpMessagingTemplate simpMessagingTemplate;
-//
-//    private UserService userService;
-//
-//    @MessageMapping("/message") //
-//    @SendTo("/chatroom/public")
-//    public Message receiveMessage(@Payload Message message){
-//        return message;
-//    }
-//
-//    @MessageMapping("/private-message")
-//    public Message recMessage(@Payload Message message){
-//        simpMessagingTemplate.convertAndSendToUser(userService.getUser(message.getRecipientId()).getLogin(),"/private",message);  // /user/user_login/private
-//        System.out.println(message.toString());
-//        return message;
-//    }
-//}
+@RestController
+public class ChatController {
+
+    @Autowired
+    private ChatService service;
+
+    @GetMapping("/chats/{chatId}")
+    public ResponseEntity<Chat> getChat(@PathVariable int chatId) {
+        return ResponseEntity.ok(service.getChat(chatId));
+    }
+
+    @PostMapping("/chats/create")
+    public ResponseEntity<Chat> createChat(@RequestBody Chat chat) {
+        Chat createdChat = service.saveChat(chat);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdChat);
+    }
+
+    @GetMapping("/chats/{user1Id}/{user2Id}")
+    public ResponseEntity<Chat> getChatByUsers(@PathVariable int user1Id,
+                                                          @PathVariable int user2Id) {
+        return ResponseEntity.ok(service.getChatByUsers(user1Id, user2Id));
+    }
+}
