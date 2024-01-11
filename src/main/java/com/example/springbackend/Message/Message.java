@@ -15,23 +15,22 @@ import java.time.LocalDateTime;
 @Table(name = "messages")
 public class Message {
 
-    @JsonIgnore //nie jestem pewny czy potrzebujemy
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int senderId;
-
-    private int recipientId;
+    private int chatId;
+    private int userId;
     private String content;
 
     @Column(name = "\"timestamp\"")
     @CreationTimestamp
     private LocalDateTime timestamp;
 
-    public Message(int senderID, int recipientId, String context, LocalDateTime timestamp) {
-        this.senderId = senderID;
-        this.recipientId = recipientId;
+    public Message(int chatId, int userId, String context, LocalDateTime timestamp) {
+        this.chatId = chatId;
+        this.chatId = userId;
         this.content = context;
         this.timestamp = timestamp;
     }

@@ -13,25 +13,15 @@ public class MessageController {
     @Autowired
     private MessageService service;
 
-    @GetMapping("/messages/{senderId}/{recipientId}")
-    public ResponseEntity<List<Message>> findChatMessages(@PathVariable int senderId,
-                                                          @PathVariable int recipientId) {
+    @GetMapping("/chats/{chatId}/messages")
+    public ResponseEntity<List<Message>> getChatMessages(@PathVariable int chatId) {
         return ResponseEntity
-                .ok(service.getMessagesbySenderRecipient(senderId, recipientId));
+                .ok(service.getChatMessages(chatId));
     }
-
-
-    @GetMapping("/messages/all/{senderId}/{recipientId}")
-    public ResponseEntity<List<Message>> findAllChatMessages(@PathVariable int senderId,
-                                                          @PathVariable int recipientId) {
-        return ResponseEntity
-                .ok(service.getAllMessagesInChat(senderId, recipientId));
-    }
-
-    @PostMapping("/messages/create")
+    @PostMapping("/chats/{chatId}/send")
     public ResponseEntity<Message> createMessage(@RequestBody Message message) {
         System.out.println(message);
-        Message createdMessage = service.saveMessage(
+        Message createdMessage = service.createMessage(
                 message);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
     }

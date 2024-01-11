@@ -6,8 +6,5 @@ import java.util.List;
 
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
-    List<Message> findBySenderIdAndRecipientId(int senderId, int recipientId);
-
-
-    List<Message> findBySenderIdAndRecipientIdOrSenderIdAndRecipientIdOrderByTimestampAsc(int firstUserId, int secondUserId, int secondUserId1, int firstUserId1);
+    List<Message> findByChatId(int chatId);
 }
