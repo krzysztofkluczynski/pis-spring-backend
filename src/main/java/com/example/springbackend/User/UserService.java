@@ -34,7 +34,7 @@ public class UserService {
         return repository.findByName(name);
     }
 
-    public User getUserByLogin(String login) {
+    public List<User> getUserByLogin(String login) {
         return repository.findByLogin(login);
     }
 

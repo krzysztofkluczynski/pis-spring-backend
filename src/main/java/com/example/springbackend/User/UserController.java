@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/users/login/{login}")
-    public ResponseEntity<User> getUserByLogin(@PathVariable String login) {
+    public ResponseEntity<List<User>> getUserByLogin(@PathVariable String login) {
         return ResponseEntity.ok(service.getUserByLogin(login));
     }
 
