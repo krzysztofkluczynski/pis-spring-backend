@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ChatRepository extends JpaRepository<Chat, Integer> {
     Chat findFirstByUser1IdAndUser2IdOrUser2IdAndUser1Id(int user1Id, int user2Id, int user2Idsecond, int user1Idsecond);
+
+    //Chat findFirstByUser1IdAndUser2IdOrUser1IdAndUser2Id(int user1Id, int user2Id, int user2Id1, int user1Id1);
 }

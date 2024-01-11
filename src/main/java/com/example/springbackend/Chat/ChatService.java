@@ -19,7 +19,10 @@ public class ChatService {
     }
 
     public Chat getChatByUsers(int user1Id, int user2Id) {
-        return repository.findFirstByUser1IdAndUser2IdOrUser2IdAndUser1Id(user1Id, user2Id, user1Id, user2Id);
+        Chat chat;
+        chat = repository.findFirstByUser1IdAndUser2IdOrUser2IdAndUser1Id(user1Id, user2Id, user2Id, user1Id);
+        System.out.println(chat.getId());
+        return chat;
     }
 
 }

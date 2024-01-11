@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "chats")
 public class Chat {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
