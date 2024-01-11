@@ -21,6 +21,6 @@ public class MessageService {
     }
 
     public List<Message> getChatMessages(int chatId) {
-            return repository.findByChatId(chatId);
+            return repository.findByChatIdOOrderByTimestampDesc(chatId);
     }
 }

@@ -20,6 +20,7 @@ public class MessageController {
     }
     @PostMapping("/chats/send")
     public ResponseEntity<Message> createMessage(@RequestBody Message message) {
+        System.out.println(message.getChatId() + "\n\n\n\n");
         Message createdMessage = service.saveMessage(message);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
     }
